@@ -91,6 +91,74 @@ import java.util.Scanner;
 //                }
 //            }
 
+//------------------------------------------------------------------------------------------------------------
+//public class Week1JJ {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("컴퓨터가 숫자를 생성하였습니다. 답을 맞춰보세요!");
+//        Random randomBall = new Random();
+//        randomBall.setSeed(System.currentTimeMillis());
+//
+//
+//        int[] ball = new int[3];
+//
+//        // 랜덤 숫자 생성
+//        for (int i = 0; i < 3; i++) {
+//            ball[i] = randomBall.nextInt(10);
+//            for (int j = 0; j < i; j++) {
+//                if (ball[i] == ball[j]) {
+//                    i--;
+//                }
+//            }
+//        }
+//
+//        // 틀렸을 경우 반복 시도
+//        int tryNum = 1;
+//        boolean escape = true;
+//        while (escape) {
+//
+//            System.out.print(tryNum + "번째 시도 : ");
+//
+//            // 사용자 입력 숫자
+//            String str = sc.nextLine();
+//            char[] inputNums = str.toCharArray();
+//            List<Integer> listNum = new ArrayList<>();
+//
+//            for (int i = 0; i < inputNums.length; i++) {
+//                listNum.add(inputNums[i] - 48);
+//            }
+//
+//            // 입력 숫자와 랜덤 숫자 비교
+//            int s = 0;
+//            int b = 0;
+//            for (int i = 0; i < 3; i++) {
+//                for (int j = 0; j < 3; j++) {
+//                    if (listNum.get(i) == ball[j]) {
+//                        if (i == j) {
+//                            s++;
+//                        } else {
+//                            b++;
+//                        }
+//                    }
+//                }
+//            }
+//
+//            // 출력 구문
+//            if (s == 3) {
+//                escape = false;
+//                System.out.println("3S");
+//                System.out.println(tryNum + "번만에 맞히셨습니다.");
+//                System.out.println("게임을 종료합니다.");
+//            } else {
+//                System.out.println(b + "B" + s + "S");
+//            }
+//            tryNum++;
+//        }
+//
+//    }
+//}
+
+
 public class Week1JJ {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -114,25 +182,23 @@ public class Week1JJ {
         // 틀렸을 경우 반복 시도
         int tryNum = 1;
         boolean escape = true;
+        String[] str = new String[1];
         while (escape) {
 
             System.out.print(tryNum + "번째 시도 : ");
 
             // 사용자 입력 숫자
-            String str = sc.nextLine();
-            char[] inputNums = str.toCharArray();
-            List<Integer> listNum = new ArrayList<>();
-
-            for (int i = 0; i < inputNums.length; i++) {
-                listNum.add(inputNums[i] - 48);
+            str[0] = sc.nextLine();
+            int[] inputNum = new int[str[0].length()];
+            for (int i = 0; i < str[0].length(); i++) {
+                inputNum[i] = Character.getNumericValue(str[0].charAt(i));
             }
-
             // 입력 숫자와 랜덤 숫자 비교
             int s = 0;
             int b = 0;
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
-                    if (listNum.get(i) == ball[j]) {
+                    if (inputNum[i] == ball[j]) {
                         if (i == j) {
                             s++;
                         } else {
